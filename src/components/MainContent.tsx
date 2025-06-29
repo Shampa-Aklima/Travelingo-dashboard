@@ -34,30 +34,30 @@ const destinations = [
 const bestDestinations = [
   {
     id: 1,
-    name: "Mount climbing",
-    location: "Bandung",
-    rating: 4.9,
+    name: "Green wood forest",
+    location: "Telangana",
+    rating: 4.8,
     reviews: 120,
     price: 999,
-    image: "/placeholder.svg?height=60&width=60",
+    image: "/green-wood-forest.png",
   },
   {
     id: 2,
     name: "Green forest Camp",
-    location: "Bogor",
+    location: "Channai",
     rating: 4.8,
     reviews: 89,
     price: 999,
-    image: "/placeholder.svg?height=60&width=60",
+    image: "/green-forest-camp.png",
   },
   {
     id: 3,
     name: "Desert Festival",
-    location: "Sahara",
-    rating: 4.7,
+    location: "Gujarat",
+    rating: 4.8,
     reviews: 156,
     price: 999,
-    image: "/placeholder.svg?height=60&width=60",
+    image: "/desert-festival.png",
   },
 ]
 
@@ -65,7 +65,7 @@ export default function MainContent() {
   return (
     <div className="flex-1 p-4 lg:p-6 overflow-y-auto">
       {/* Destination Cards */}
-      <div className="grid grid-cols-2 gap-4 lg:gap-6 mb-6 lg:mb-8 max-w-full">
+      <div className="grid grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8 max-w-full">
         {destinations.map((destination) => (
           <div key={destination.id} className="flex justify-center">
             <DestinationCard destination={destination} />
