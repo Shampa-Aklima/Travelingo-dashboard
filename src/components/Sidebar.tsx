@@ -9,7 +9,6 @@ import {
   CreditCardIcon,
   Cog6ToothIcon,
   ArrowRightOnRectangleIcon,
-  XMarkIcon,
 } from "@heroicons/react/24/outline"
 
 const menuItems = [
@@ -21,26 +20,14 @@ const menuItems = [
   { name: "Setting", icon: Cog6ToothIcon, active: false },
 ]
 
-interface SidebarProps {
-  onClose?: () => void
-}
-
-export default function Sidebar({ onClose }: SidebarProps) {
+export default function Sidebar() {
   const [activeItem, setActiveItem] = useState("Dashboard")
 
   return (
-    <div className="w-64 bg-white shadow-sm flex flex-col h-full">
-      {/* Logo and Close Button */}
-      <div className="p-6 flex items-center justify-between">
+    <div className="w-64 bg-white shadow-sm flex flex-col">
+      {/* Logo */}
+      <div className="p-6">
         <h1 className="text-xl font-bold text-gray-900">Travelingo</h1>
-        {onClose && (
-          <button
-            onClick={onClose}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
-          >
-            <XMarkIcon className="w-5 h-5 text-gray-600" />
-          </button>
-        )}
       </div>
 
       {/* Navigation */}
@@ -49,10 +36,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
           {menuItems.map((item) => (
             <li key={item.name}>
               <button
-                onClick={() => {
-                  setActiveItem(item.name)
-                  onClose?.()
-                }}
+                onClick={() => setActiveItem(item.name)}
                 className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                   activeItem === item.name ? "bg-emerald-500 text-white" : "text-gray-600 hover:bg-gray-100"
                 }`}

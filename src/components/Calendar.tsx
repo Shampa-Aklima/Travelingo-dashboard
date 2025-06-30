@@ -4,12 +4,22 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline"
 
 interface CalendarProps {
   selectedDate: Date
-  setSelectedDateAction: (date: Date) => void
+  setSelectedDate: (date: Date) => void
   currentMonth: Date
-  setCurrentMonthAction: (date: Date) => void
+  setCurrentMonth: (date: Date) => void
+  highlightRange: {
+    start: Date
+    end: Date
+  }
 }
 
-export default function Calendar({ selectedDate, setSelectedDateAction, currentMonth, setCurrentMonthAction }: CalendarProps) {
+export default function Calendar({
+  selectedDate,
+  setSelectedDate,
+  currentMonth,
+  setCurrentMonth,
+  highlightRange,
+}: CalendarProps) {
   const monthNames = [
     "January",
     "February",
@@ -25,7 +35,7 @@ export default function Calendar({ selectedDate, setSelectedDateAction, currentM
     "December",
   ]
 
-  const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  const dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 
   const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear()
@@ -57,13 +67,7 @@ export default function Calendar({ selectedDate, setSelectedDateAction, currentM
     } else {
       newMonth.setMonth(newMonth.getMonth() + 1)
     }
-    setCurrentMonthAction(newMonth)
-  }
-
-  const isToday = (date: Date | null) => {
-    if (!date) return false
-    const today = new Date()
-    return date.toDateString() === today.toDateString()
+    setCurrentMonth(newMonth)
   }
 
   const isSelected = (date: Date | null) => {
@@ -71,49 +75,69 @@ export default function Calendar({ selectedDate, setSelectedDateAction, currentM
     return date.toDateString() === selectedDate.toDateString()
   }
 
+  const isInHighlightRange = (date: Date | null) => {
+    if (!date || !highlightRange || !highlightRange.start || !highlightRange.end) return false
+    const dateTime = date.getTime()
+    const startTime = highlightRange.start.getTime()
+    const endTime = highlightRange.end.getTime()
+    return dateTime >= startTime && dateTime <= endTime
+  }
+
   const days = getDaysInMonth(currentMonth)
 
   return (
     <div className="mb-8">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold text-gray-900">
           {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
         </h2>
-        <div className="flex space-x-1">
-          <button onClick={() => navigateMonth("prev")} className="p-1 hover:bg-gray-100 rounded">
-            <ChevronLeftIcon className="w-4 h-4" />
+        <div className="flex space-x-2">
+          <button
+            onClick={() => navigateMonth("prev")}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <ChevronLeftIcon className="w-5 h-5 text-gray-600" />
           </button>
-          <button onClick={() => navigateMonth("next")} className="p-1 hover:bg-gray-100 rounded">
-            <ChevronRightIcon className="w-4 h-4" />
+          <button
+            onClick={() => navigateMonth("next")}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <ChevronRightIcon className="w-5 h-5 text-gray-600" />
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-7 gap-1 mb-2">
+      <div className="grid grid-cols-7 gap-1 mb-3">
         {dayNames.map((day) => (
-          <div key={day} className="text-center text-xs font-medium text-gray-500 py-2">
+          <div key={day} className="text-center text-sm font-medium text-gray-500 py-2">
             {day}
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-7 gap-1">
-        {days.map((date, index) => (
-          <button
-            key={index}
-            onClick={() => date && setSelectedDateAction(date)}
-            disabled={!date}
-            className={`
-              h-8 w-8 text-sm rounded-lg flex items-center justify-center transition-colors
-              ${!date ? "invisible" : ""}
-              ${isToday(date) ? "bg-emerald-500 text-white font-medium" : ""}
-              ${isSelected(date) && !isToday(date) ? "bg-emerald-100 text-emerald-700 font-medium" : ""}
-              ${!isToday(date) && !isSelected(date) ? "hover:bg-gray-100 text-gray-700" : ""}
-            `}
-          >
-            {date?.getDate()}
-          </button>
-        ))}
+        {days.map((date, index) => {
+          const isCurrentSelected = isSelected(date)
+          const isHighlighted = isInHighlightRange(date)
+
+          return (
+            <button
+              key={index}
+              onClick={() => date && setSelectedDate(date)}
+              disabled={!date}
+              className={`
+                h-10 w-10 text-sm flex items-center justify-center transition-all duration-200
+                ${!date ? "invisible" : ""}
+                ${isCurrentSelected ? "bg-teal-100 text-teal-700 rounded-full border-2 border-teal-300" : ""}
+                ${isHighlighted ? "bg-emerald-500 text-white rounded-full font-medium" : ""}
+                ${!isCurrentSelected && !isHighlighted ? "hover:bg-gray-100 text-gray-700 rounded-full" : ""}
+                ${!date ? "" : "cursor-pointer"}
+              `}
+            >
+              {date?.getDate()}
+            </button>
+          )
+        })}
       </div>
     </div>
   )

@@ -1,43 +1,55 @@
 "use client"
 
 import Image from "next/image"
+import { StarIcon } from "@heroicons/react/24/solid"
 
 interface ExploreCardProps {
-  imageSrc: string
+  image: string
   title: string
   location: string
   rating: number
   price: number
 }
 
-export default function ExploreCard({ imageSrc, title, location, rating, price }: ExploreCardProps) {
+export default function ExploreCard({ image, title, location, rating, price }: ExploreCardProps) {
   return (
-    <div className="w-full bg-white rounded-xl p-4 flex gap-4 items-center hover:shadow-lg transition-shadow">
-      <div className="relative w-[72px] h-[72px]">
-        <Image
-          src={imageSrc}
-          alt={title}
-          fill
-          className="object-cover rounded-lg"
-          priority
-        />
-      </div>
-      
-      <div className="flex-1">
-        <h3 className="text-base font-semibold text-gray-900 mb-1">{title}</h3>
-        <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-          <span>{location}</span>
-          <div className="flex items-center gap-1">
-            <span>⭐</span>
-            <span>{rating}</span>
+    <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 text-white relative overflow-hidden">
+      <div className="relative z-10">
+        {/* Character/Image Section */}
+        <div className="w-20 h-20 bg-emerald-500 rounded-2xl flex items-center justify-center mb-4 relative overflow-hidden">
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={title}
+            width={80}
+            height={80}
+            className="object-cover rounded-2xl"
+          />
+        </div>
+
+        <h3 className="text-xl font-bold mb-2">{title}</h3>
+
+        <div className="flex items-center space-x-1 mb-2">
+          <StarIcon className="w-4 h-4 text-yellow-400" />
+          <span className="text-sm font-medium">{rating}</span>
+          <span className="text-sm opacity-80">• {location}</span>
+        </div>
+
+        <p className="text-sm opacity-80 mb-6">Get special offers & news</p>
+
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-2xl font-bold">${price}</span>
+            <span className="text-sm opacity-80 ml-1">per person</span>
           </div>
-        </div>
-        <div className="text-[#00B087] font-semibold">
-          ₹{price}
-          <span className="text-xs text-gray-500 ml-1">INR</span>
+          <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-medium transition-colors">
+            Join Now
+          </button>
         </div>
       </div>
+
+      {/* Background decoration */}
+      <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
+      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full"></div>
     </div>
   )
 }
-

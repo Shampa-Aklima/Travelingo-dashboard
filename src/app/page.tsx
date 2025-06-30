@@ -1,54 +1,113 @@
 "use client"
 
 import { useState } from "react"
-import Sidebar from "../components/Sidebar"
-import Header from "../components/Header"
-import MainContent from "../components/MainContent"
-import RightSidebar from "../components/RightSidebar"
+import Sidebar from "@/components/Sidebar"
+import Header from "@/components/Header"
+import MainContent from "@/components/MainContent"
+import RightSidebar from "@/components/RightSidebar"
+
+// Two different calendar states matching the screenshots
+const calendarStates = [
+  {
+    id: "state-1",
+    selectedDate: new Date(2025, 4, 3), // May 3, 2025 (light green circle)
+    currentMonth: new Date(2025, 4, 1), // May 2025
+    highlightRange: {
+      start: new Date(2025, 4, 20), // May 20, 2025 (dark green)
+      end: new Date(2025, 4, 23), // May 23, 2025 (dark green)
+    },
+    scheduleItems: [
+      {
+        id: 1,
+        title: "Crooked Forest",
+        dateRange: "20 may - 23 may",
+        image: "/placeholder.svg?height=60&width=60",
+        participants: [
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+        ],
+        additionalCount: 16,
+      },
+    ],
+  },
+  {
+    id: "state-2",
+    selectedDate: new Date(2025, 4, 4), // May 4, 2025 (light green circle)
+    currentMonth: new Date(2025, 4, 1), // May 2025
+    highlightRange: {
+      start: new Date(2025, 4, 21), // May 21, 2025 (dark green)
+      end: new Date(2025, 4, 24), // May 24, 2025 (dark green)
+    },
+    scheduleItems: [
+      {
+        id: 1,
+        title: "Crooked Forest",
+        dateRange: "20 may - 23 may",
+        image: "/placeholder.svg?height=60&width=60",
+        participants: [
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+        ],
+        additionalCount: 2,
+      },
+      {
+        id: 2,
+        title: "Fem Waterfall",
+        dateRange: "20 may - 23 may",
+        image: "/placeholder.svg?height=60&width=60",
+        participants: [
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+        ],
+        additionalCount: 2,
+      },
+      {
+        id: 3,
+        title: "Night Camping",
+        dateRange: "20 may - 23 may",
+        image: "/placeholder.svg?height=60&width=60",
+        participants: [
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+          "/placeholder.svg?height=24&width=24",
+        ],
+        additionalCount: 2,
+      },
+    ],
+  },
+]
 
 export default function Dashboard() {
-  const [selectedDate, setSelectedDate] = useState(new Date())
-  const [currentMonth, setCurrentMonth] = useState(new Date())
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [rightSidebarOpen, setRightSidebarOpen] = useState(false)
+  const [currentState, setCurrentState] = useState(0)
+  const [selectedDate, setSelectedDate] = useState(calendarStates[currentState].selectedDate)
+  const [currentMonth, setCurrentMonth] = useState(calendarStates[currentState].currentMonth)
+
+  // Function to switch between calendar states
+  const switchCalendarState = () => {
+    const newState = currentState === 0 ? 1 : 0
+    setCurrentState(newState)
+    setSelectedDate(calendarStates[newState].selectedDate)
+    setCurrentMonth(calendarStates[newState].currentMonth)
+  }
 
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* Mobile sidebar overlay */}
-      {sidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-      
-      {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-sm transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
-        <Sidebar onClose={() => setSidebarOpen(false)} />
-      </div>
-
-      <div className="flex-1 flex flex-col min-w-0">
-        <Header 
-          onMenuClick={() => setSidebarOpen(true)}
-          onCalendarClick={() => setRightSidebarOpen(!rightSidebarOpen)}
-        />
-        
+      <Sidebar />
+      <div className="flex-1 flex flex-col">
+        <Header onToggleCalendar={switchCalendarState} />
         <div className="flex-1 flex overflow-hidden">
           <MainContent />
-          
-          {/* Right Sidebar */}
-          <div className={`fixed inset-y-0 right-0 z-40 w-64 bg-white border-l border-gray-200 transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 ${
-            rightSidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'
-          }`}>
           <RightSidebar
             selectedDate={selectedDate}
-              setSelectedDateAction={setSelectedDate}
+            setSelectedDate={setSelectedDate}
             currentMonth={currentMonth}
-              setCurrentMonthAction={setCurrentMonth}
+            setCurrentMonth={setCurrentMonth}
+            highlightRange={calendarStates[currentState].highlightRange}
+            scheduleItems={calendarStates[currentState].scheduleItems}
           />
-          </div>
         </div>
       </div>
     </div>

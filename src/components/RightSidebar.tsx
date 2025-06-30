@@ -3,28 +3,45 @@
 import Calendar from "./Calendar"
 import Schedule from "./Schedule"
 
+interface ScheduleItem {
+  id: number
+  title: string
+  dateRange: string
+  image: string
+  participants: string[]
+  additionalCount: number
+}
+
 interface RightSidebarProps {
   selectedDate: Date
-  setSelectedDateAction: (date: Date) => void
+  setSelectedDate: (date: Date) => void
   currentMonth: Date
-  setCurrentMonthAction: (date: Date) => void
+  setCurrentMonth: (date: Date) => void
+  highlightRange: {
+    start: Date
+    end: Date
+  }
+  scheduleItems: ScheduleItem[]
 }
 
 export default function RightSidebar({
   selectedDate,
-  setSelectedDateAction,
+  setSelectedDate,
   currentMonth,
-  setCurrentMonthAction,
+  setCurrentMonth,
+  highlightRange,
+  scheduleItems,
 }: RightSidebarProps) {
   return (
-    <div className="w-full lg:w-64 bg-white border-l border-gray-200 p-4 lg:p-6 overflow-y-auto h-full">
+    <div className="w-80 bg-gray-50 p-6 overflow-y-auto">
       <Calendar
         selectedDate={selectedDate}
-        setSelectedDate={setSelectedDateAction}
+        setSelectedDate={setSelectedDate}
         currentMonth={currentMonth}
-        setCurrentMonth={setCurrentMonthAction}
+        setCurrentMonth={setCurrentMonth}
+        highlightRange={highlightRange}
       />
-      <Schedule />
+      <Schedule scheduleItems={scheduleItems} />
     </div>
   )
 }
