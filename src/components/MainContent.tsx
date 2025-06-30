@@ -81,7 +81,13 @@ export default function MainContent() {
 
         {/* Explore Card - Takes 1 column */}
         <div className="lg:col-span-1 order-1 lg:order-2">
-          <ExploreCard />
+          <ExploreCard
+            imageSrc="/best-dest-card.png"
+            title="Let's Explore the beauty"
+            location="Various Locations"
+            rating={4.9}
+            price={1299}
+          />
         </div>
       </div>
     </div>

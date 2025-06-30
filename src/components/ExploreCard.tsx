@@ -2,44 +2,42 @@
 
 import Image from "next/image"
 
-export default function ExploreCard() {
+interface ExploreCardProps {
+  imageSrc: string
+  title: string
+  location: string
+  rating: number
+  price: number
+}
+
+export default function ExploreCard({ imageSrc, title, location, rating, price }: ExploreCardProps) {
   return (
-    <div className="w-[278px] h-[400px] bg-[#1C1B23] rounded-[26px] p-8 text-white relative">
-      <div className="relative z-10 flex flex-col gap-6">
-        <div className="relative flex items-center justify-center">
-          <div className="absolute top-0 left-0 w-[120px] h-[120px] bg-[#00B087] rounded-full opacity-20"></div>
-          <Image
-            src="/best-dest-card.png"
-            alt="Explorer"
-            width={180}
-            height={180}
-            className="relative z-10"
-            priority
-          />
-        </div>
-
-        <div className="space-y-2 text-center">
-          <h3 className="text-2xl font-semibold leading-tight">
-            Let&apos;s Explore
-            <br />
-            the beauty
-          </h3>
-          <p className="text-sm text-gray-400">Get special offers & news</p>
-        
-        <button className="w-full bg-[#00B087] text-white py-4 rounded-xl font-medium text-base hover:bg-[#00C096] transition-colors">
-          Join Now
-        </button>
+    <div className="w-full bg-white rounded-xl p-4 flex gap-4 items-center hover:shadow-lg transition-shadow">
+      <div className="relative w-[72px] h-[72px]">
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          className="object-cover rounded-lg"
+          priority
+        />
       </div>
-        
+      
+      <div className="flex-1">
+        <h3 className="text-base font-semibold text-gray-900 mb-1">{title}</h3>
+        <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+          <span>{location}</span>
+          <div className="flex items-center gap-1">
+            <span>⭐</span>
+            <span>{rating}</span>
+          </div>
         </div>
-
-        
-
-      {/* Background decoration */}
-      <div className="absolute -top-20 -right-20 w-[200px] h-[200px] bg-[#00B087] rounded-full opacity-5"></div>
-      <div className="absolute -bottom-20 -left-20 w-[250px] h-[250px] bg-[#00B087] rounded-full opacity-5"></div>
+        <div className="text-[#00B087] font-semibold">
+          ₹{price}
+          <span className="text-xs text-gray-500 ml-1">INR</span>
+        </div>
+      </div>
     </div>
   )
 }
-
 
