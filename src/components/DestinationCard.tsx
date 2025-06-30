@@ -20,23 +20,19 @@ interface DestinationCardProps {
 
 export default function DestinationCard({ destination }: DestinationCardProps) {
   return (
-    <div className="relative w-[272px] h-[373px] rounded-[26px] overflow-hidden group cursor-pointer px-2">
+    <div className="relative w-full max-w-[272px] aspect-[272/373] rounded-[26px] overflow-hidden group cursor-pointer">
       <Image
         src={destination.image || "/placeholder.svg"}
         alt={destination.title}
         fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        priority
         className="object-cover transition-transform duration-300 group-hover:scale-110"
       />
       <div className={`absolute inset-0 bg-gradient-to-t ${destination.gradient} opacity-60`}></div>
       
-      {/* Rating Badge */}
-      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center space-x-1">
-        <StarIcon className="w-4 h-4 text-yellow-400" />
-        <span className="text-sm font-semibold text-gray-800">{destination.rating}</span>
-      </div>
-      
-      <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
-        <h3 className="text-xl font-bold mb-2">{destination.title}</h3>
+      <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end text-white">
+        <h3 className="text-lg sm:text-xl font-bold mb-2">{destination.title}</h3>
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-1">
             <MapPinIcon className="w-4 h-4 opacity-80" />

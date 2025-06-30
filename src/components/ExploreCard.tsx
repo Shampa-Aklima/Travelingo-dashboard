@@ -1,30 +1,45 @@
 "use client"
 
+import Image from "next/image"
+
 export default function ExploreCard() {
   return (
-    <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 text-white relative overflow-hidden">
-      <div className="relative z-10">
-        <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center mb-4">
-          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <span className="text-emerald-500 text-xl">🏃‍♂️</span>
-          </div>
+    <div className="w-[278px] h-[400px] bg-[#1C1B23] rounded-[26px] p-8 text-white relative">
+      <div className="relative z-10 flex flex-col gap-6">
+        <div className="relative flex items-center justify-center">
+          <div className="absolute top-0 left-0 w-[120px] h-[120px] bg-[#00B087] rounded-full opacity-20"></div>
+          <Image
+            src="/best-dest-card.png"
+            alt="Explorer"
+            width={180}
+            height={180}
+            className="relative z-10"
+            priority
+          />
         </div>
 
-        <h3 className="text-xl font-bold mb-2">
-          Let's Explore
-          <br />
-          the beauty
-        </h3>
-        <p className="text-sm opacity-80 mb-6">Get special offers & news</p>
-
-        <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-medium transition-colors">
+        <div className="space-y-2 text-center">
+          <h3 className="text-2xl font-semibold leading-tight">
+            Let&apos;s Explore
+            <br />
+            the beauty
+          </h3>
+          <p className="text-sm text-gray-400">Get special offers & news</p>
+        
+        <button className="w-full bg-[#00B087] text-white py-4 rounded-xl font-medium text-base hover:bg-[#00C096] transition-colors">
           Join Now
         </button>
       </div>
+        
+        </div>
+
+        
 
       {/* Background decoration */}
-      <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
-      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full"></div>
+      <div className="absolute -top-20 -right-20 w-[200px] h-[200px] bg-[#00B087] rounded-full opacity-5"></div>
+      <div className="absolute -bottom-20 -left-20 w-[250px] h-[250px] bg-[#00B087] rounded-full opacity-5"></div>
     </div>
   )
 }
+
+

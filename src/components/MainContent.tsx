@@ -16,7 +16,7 @@ const destinations = [
   {
     id: 2,
     title: "Night camping",
-    category: " Lightning lake",
+    category: "Lightning lake",
     image: "/night-campaign.png",
     gradient: "from-blue-500 to-purple-600",
     rating: 4.8,
@@ -63,9 +63,9 @@ const bestDestinations = [
 
 export default function MainContent() {
   return (
-    <div className="flex-1 p-4 lg:p-6 overflow-y-auto">
+    <div className="flex-1 p-4 lg:p-6 overflow-y-auto scrollbar-hide">
       {/* Destination Cards */}
-      <div className="grid grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8 max-w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8 max-w-full">
         {destinations.map((destination) => (
           <div key={destination.id} className="flex justify-center">
             <DestinationCard destination={destination} />
@@ -75,12 +75,12 @@ export default function MainContent() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Best Destinations - Takes 2 columns */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 order-2 lg:order-1">
           <DestinationList destinations={bestDestinations} />
         </div>
 
         {/* Explore Card - Takes 1 column */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 order-1 lg:order-2">
           <ExploreCard />
         </div>
       </div>
