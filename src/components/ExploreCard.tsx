@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { StarIcon } from "@heroicons/react/24/solid"
 
 interface ExploreCardProps {
   image: string
@@ -11,45 +10,44 @@ interface ExploreCardProps {
   price: number
 }
 
-export default function ExploreCard({ image, title, location, rating, price }: ExploreCardProps) {
+export default function ExploreCard({ image, title }: ExploreCardProps) {
   return (
-    <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 text-white relative overflow-hidden">
-      <div className="relative z-10">
-        {/* Character/Image Section */}
-        <div className="w-20 h-20 bg-emerald-500 rounded-2xl flex items-center justify-center mb-4 relative overflow-hidden">
+    <div className="w-[200px] h-[350px] relative overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800 text-white rounded-2xl mt-10">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent"></div>
+      </div>
+
+      {/* Content Overlay */}
+      <div className="relative z-10 h-full flex flex-col justify-end p-4">
+        {/* Character/Avatar Section */}
+        <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mb-3 relative overflow-hidden">
           <Image
-            src={image || "/placeholder.svg"}
-            alt={title}
-            width={80}
-            height={80}
-            className="object-cover rounded-2xl"
+            src="/placeholder.svg?height=48&width=48"
+            alt="Character"
+            width={200}
+            height={200}
+            className="object-cover rounded-xl"
           />
         </div>
 
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <h3 className="text-sm font-bold mb-1">Let&apos;s Explore the beauty</h3>
 
-        <div className="flex items-center space-x-1 mb-2">
-          <StarIcon className="w-4 h-4 text-yellow-400" />
-          <span className="text-sm font-medium">{rating}</span>
-          <span className="text-sm opacity-80">• {location}</span>
-        </div>
+        <p className="text-xs opacity-80 mb-3">Get special offers & news</p>
 
-        <p className="text-sm opacity-80 mb-6">Get special offers & news</p>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-2xl font-bold">${price}</span>
-            <span className="text-sm opacity-80 ml-1">per person</span>
-          </div>
-          <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-medium transition-colors">
-            Join Now
-          </button>
-        </div>
+        <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-2 rounded-lg text-xs font-medium transition-colors">
+          Join Now
+        </button>
       </div>
 
       {/* Background decoration */}
-      <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
-      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full"></div>
+      <div className="absolute -top-2 -right-2 w-12 h-12 bg-white/10 rounded-full"></div>
+      <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-white/5 rounded-full"></div>
     </div>
   )
 }
+
+
+
+

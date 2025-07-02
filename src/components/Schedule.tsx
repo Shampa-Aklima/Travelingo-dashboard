@@ -49,8 +49,8 @@ export default function Schedule({ scheduleItems }: ScheduleProps) {
                         <Image
                           src={participantImage || "/placeholder.svg"}
                           alt={`Participant ${i + 1}`}
-                          width={32}
-                          height={32}
+                          width={40}
+                          height={40}
                           className="object-cover"
                         />
                       </div>

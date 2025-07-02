@@ -21,13 +21,25 @@ const calendarStates = [
         id: 1,
         title: "Crooked Forest",
         dateRange: "20 may - 23 may",
-        image: "/placeholder.svg?height=60&width=60",
-        participants: [
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
-        ],
-        additionalCount: 16,
+        image: "/crocked-forest.png",
+        participants: ["/people1.jpg", "/people2.jpg", "/people3.jpg"],
+        additionalCount: 2,
+      },
+      {
+        id: 2,
+        title: "Fem Waterfall",
+        dateRange: "20 may - 23 may",
+        image: "/fem-waterfall.png",
+        participants: ["/people1.jpg", "/people2.jpg", "/people3.jpg"],
+        additionalCount: 2,
+      },
+      {
+        id: 3,
+        title: "Night Camping",
+        dateRange: "20 may - 23 may",
+        image: "/night-campaign.png",
+        participants: ["/people1.jpg", "/people2.jpg", "/people3.jpg"],
+        additionalCount: 2,
       },
     ],
   },
@@ -44,7 +56,7 @@ const calendarStates = [
         id: 1,
         title: "Crooked Forest",
         dateRange: "20 may - 23 may",
-        image: "/placeholder.svg?height=60&width=60",
+        image: "/crocked-forest.png",
         participants: [
           "/placeholder.svg?height=24&width=24",
           "/placeholder.svg?height=24&width=24",
@@ -56,7 +68,7 @@ const calendarStates = [
         id: 2,
         title: "Fem Waterfall",
         dateRange: "20 may - 23 may",
-        image: "/placeholder.svg?height=60&width=60",
+        image: "/fem-waterfall.png",
         participants: [
           "/placeholder.svg?height=24&width=24",
           "/placeholder.svg?height=24&width=24",
@@ -68,7 +80,7 @@ const calendarStates = [
         id: 3,
         title: "Night Camping",
         dateRange: "20 may - 23 may",
-        image: "/placeholder.svg?height=60&width=60",
+        image: "/night-campaign.png",
         participants: [
           "/placeholder.svg?height=24&width=24",
           "/placeholder.svg?height=24&width=24",
@@ -85,7 +97,6 @@ export default function Dashboard() {
   const [selectedDate, setSelectedDate] = useState(calendarStates[currentState].selectedDate)
   const [currentMonth, setCurrentMonth] = useState(calendarStates[currentState].currentMonth)
 
-  // Function to switch between calendar states
   const switchCalendarState = () => {
     const newState = currentState === 0 ? 1 : 0
     setCurrentState(newState)
@@ -94,12 +105,23 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <Header onToggleCalendar={switchCalendarState} />
-        <div className="flex-1 flex overflow-hidden">
-          <MainContent />
+    <div className="w-full min-h-screen bg-gray-50 px-2.5 py-2.5">
+      <div className="w-full h-full bg-white rounded-[10px] overflow-hidden grid grid-cols-6">
+        {/* Left Sidebar - 1 column */}
+        <div className="col-span-1 border-r border-gray-100">
+          <Sidebar />
+        </div>
+
+        {/* Main Content Area - 3 columns (double the sidebars) */}
+        <div className="col-span-3 flex flex-col border-r border-gray-100">
+          <Header onToggleCalendar={switchCalendarState} />
+          <div className=" overflow-hidden">
+            <MainContent />
+          </div>
+        </div>
+
+        {/* Right Sidebar - 2 column */}
+        <div className="col-span-2">
           <RightSidebar
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
