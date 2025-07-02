@@ -36,19 +36,20 @@ export default function Dashboard({ config, onToggleCalendar }: DashboardProps) 
   const [currentMonth, setCurrentMonth] = useState<Date>(config.currentMonth)
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col h-screen">
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Header onToggleCalendar={onToggleCalendar} />
         <div className="flex-1 flex overflow-hidden">
           <MainContent />
-          <RightSidebar
+        <RightSidebar
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
             currentMonth={currentMonth}
             setCurrentMonth={setCurrentMonth}
             highlightRange={config.highlightRange}
             scheduleItems={config.scheduleItems}
+            onToggleCalendar={onToggleCalendar}
           />
         </div>
       </div>

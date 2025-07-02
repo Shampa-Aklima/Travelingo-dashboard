@@ -105,22 +105,18 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 px-2.5 py-2.5">
+    <div className="w-full h-full bg-gray-50 px-2.5 py-2.5">
       <div className="w-full h-full bg-white rounded-[10px] overflow-hidden grid grid-cols-6">
-        {/* Left Sidebar - 1 column */}
+
         <div className="col-span-1 border-r border-gray-100">
           <Sidebar />
-        </div>
-
-        {/* Main Content Area - 3 columns (double the sidebars) */}
+        </div> 
         <div className="col-span-3 flex flex-col border-r border-gray-100">
           <Header onToggleCalendar={switchCalendarState} />
-          <div className=" overflow-hidden">
+          <div className="flex-1 overflow-hidden">
             <MainContent />
           </div>
-        </div>
-
-        {/* Right Sidebar - 2 column */}
+        </div>    
         <div className="col-span-2">
           <RightSidebar
             selectedDate={selectedDate}
@@ -129,6 +125,7 @@ export default function Dashboard() {
             setCurrentMonth={setCurrentMonth}
             highlightRange={calendarStates[currentState].highlightRange}
             scheduleItems={calendarStates[currentState].scheduleItems}
+            onToggleCalendar={switchCalendarState}
           />
         </div>
       </div>

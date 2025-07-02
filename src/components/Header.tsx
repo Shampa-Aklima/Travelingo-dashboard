@@ -7,7 +7,7 @@ interface HeaderProps {
   onToggleCalendar: () => void
 }
 
-export default function Header({ onToggleCalendar }: HeaderProps) {
+export default function Header({}: HeaderProps) {
   return (
     <div className="bg-white px-4 py-4 border-b border-gray-100">
       <div className="flex items-center justify-between">
@@ -17,14 +17,6 @@ export default function Header({ onToggleCalendar }: HeaderProps) {
         </div>
 
         <div className="flex items-center space-x-3">
-          {/* Switch Calendar Button */}
-          <button
-            onClick={onToggleCalendar}
-            className="flex items-center space-x-2 px-3 py-2 bg-emerald-100 text-emerald-700 rounded-lg hover:bg-emerald-200 transition-colors"
-          >
-            <span className="text-sm font-medium">Switch Calendar</span>
-          </button>
-
           {/* Search */}
           <div className="relative">
             <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -40,9 +32,10 @@ export default function Header({ onToggleCalendar }: HeaderProps) {
             <PencilIcon className="w-4 h-4" />
           </button>
 
- 
+          
         </div>
       </div>
     </div>
   )
 }
+
