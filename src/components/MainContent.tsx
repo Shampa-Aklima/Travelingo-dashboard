@@ -75,11 +75,9 @@ export default function MainContent() {
         </div>
         <div className="col-span-1">
           <ExploreCard
-            image="/explore-image.png"
+            image="/best-dest-card.png"
             title="Let's Explore the beauty"
-            location="Various Locations"
-            rating={4.9}
-            price={1299}
+        
           />
         </div>
       </div>

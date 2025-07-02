@@ -37,14 +37,14 @@ export default function RightSidebar({
   onToggleCalendar,
 }: RightSidebarProps) {
   return (
-    <div className="w-full h-full bg-gray-50 px-4 py-4">
+    <div className="w-full h-full bg-gray-50 px-4">
 
 <div className=" bg-white p-4 rounded-lg shadow-md">  
   <div className="flex justify-center items-center">
-  <div className="flex items-center justify-between">
+  <div className="flex">
             <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-200">
               <Image
-                src="/placeholder.svg?height=32&width=32"
+                src="/jim.png"
                 alt="Jemmy Max"
                 width={32}
                 height={32}

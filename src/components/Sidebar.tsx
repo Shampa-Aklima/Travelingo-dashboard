@@ -24,7 +24,7 @@ export default function Sidebar() {
   const [activeItem, setActiveItem] = useState("Dashboard")
 
   return (
-    <div className="w-full h-full bg-white flex flex-col">
+    <div className="w-full h-full  bg-white flex flex-col">
       {/* Logo */}
       <div className="px-4 py-6">
         <h1 className="text-lg font-bold text-gray-900">Travelingo</h1>
@@ -50,13 +50,14 @@ export default function Sidebar() {
       </nav>
 
       {/* Discount Card */}
-      <div className="px-3 pb-3">
-        <div className="bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-xl p-4 text-white relative overflow-hidden">
+      <div >
+        <div className="w-[200px] h-[265px] bg-[#b9f4e0] rounded-xl p-4 text-white relative overflow-hidden shadow-[22_4px_22px_0_rgba(#0000001F)]">
           <div className="relative z-10">
-            <h3 className="text-sm font-bold mb-1">50% Discount</h3>
+            <h3 className="text-2xl text-black mb-1"><span className="text-2xl text-[#FF8142]">50% </span>Discount</h3>
             <p className="text-xs opacity-90 mb-1">Special offer for you</p>
             <p className="text-xs opacity-75">Valid until 31 Dec</p>
           </div>
+          <div className="absolute -top-3 -left-3 w-28 h-28 bg-[#b9f4e0]/10 rounded-full"></div>
           <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-white/20 rounded-full"></div>
           <div className="absolute -top-1 -right-1 w-6 h-6 bg-white/20 rounded-full"></div>
         </div>
@@ -72,3 +73,4 @@ export default function Sidebar() {
     </div>
   )
 }
+
