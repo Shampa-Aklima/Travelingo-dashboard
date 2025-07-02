@@ -70,12 +70,9 @@ export default function MainContent() {
 
       {/* Bottom Section */}
       <div className="grid grid-cols-3 gap-3">
-        {/* Best Destinations - Takes 3 columns (larger) */}
         <div className="col-span-2">
           <DestinationList destinations={bestDestinations} />
         </div>
-
-        {/* Explore Card - Takes 2 columns (smaller) */}
         <div className="col-span-1">
           <ExploreCard
             image="/explore-image.png"
