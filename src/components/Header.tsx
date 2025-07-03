@@ -1,6 +1,6 @@
 "use client"
 
-import { MagnifyingGlassIcon, PencilIcon } from "@heroicons/react/24/outline"
+import { BellIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 
 
 interface HeaderProps {
@@ -27,11 +27,12 @@ export default function Header({}: HeaderProps) {
             />
           </div>
 
-          {/* Edit Icon */}
+         
           <button className="p-2 text-gray-400 hover:text-gray-600 bg-gray-50 rounded-lg">
-            <PencilIcon className="w-4 h-4" />
+            <BellIcon className="w-4 h-4" />
           </button>
 
+          
           
         </div>
       </div>

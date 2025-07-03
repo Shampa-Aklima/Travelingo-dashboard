@@ -24,7 +24,7 @@ export default function Sidebar() {
   const [activeItem, setActiveItem] = useState("Dashboard")
 
   return (
-    <div className="w-full h-full  bg-white flex flex-col">
+    <div className="w-full bg-white flex flex-col">
       {/* Logo */}
       <div className="px-4 py-6">
         <h1 className="text-lg font-bold text-gray-900">Travelingo</h1>
@@ -51,7 +51,7 @@ export default function Sidebar() {
 
       {/* Discount Card */}
       <div >
-        <div className="w-[200px] h-[265px] bg-[#b9f4e0] rounded-xl p-4 text-white relative overflow-hidden shadow-[22_4px_22px_0_rgba(#0000001F)]">
+        <div className="w-[200px] h-[265px] bg-[#b9f4e0] rounded-xl p-4 text-white relative overflow-hidden mt-10 ">
           <div className="relative z-10">
             <h3 className="text-2xl text-black mb-1"><span className="text-2xl text-[#FF8142]">50% </span>Discount</h3>
             <p className="text-xs opacity-90 mb-1">Special offer for you</p>
@@ -64,7 +64,7 @@ export default function Sidebar() {
       </div>
 
       {/* Logout */}
-      <div className="px-3 pb-4">
+      <div className="px-3 pb-4 mt-10">
         <button className="w-full flex items-center px-3 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
           <ArrowRightOnRectangleIcon className="w-4 h-4 mr-2" />
           Log Out

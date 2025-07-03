@@ -36,7 +36,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
       <div className={`absolute inset-0 bg-gradient-to-t ${destination.gradient} opacity-60`}></div>
       <div className="absolute inset-0 p-3 flex flex-col justify-end text-white">
         <h3 className="text-sm font-bold mb-0.5">{destination.title}</h3>
-        <p className="text-xs opacity-90">{destination.subtitle}</p>
+        <p className="text-sm opacity-90">{destination.subtitle}</p>
       </div>
     </div>
   )

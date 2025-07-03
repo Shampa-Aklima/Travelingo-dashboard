@@ -58,9 +58,9 @@ const calendarStates = [
         dateRange: "20 may - 23 may",
         image: "/crocked-forest.png",
         participants: [
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
+          "/people1.jpg",
+          "/people2.jpg",
+          "/people3.jpg",
         ],
         additionalCount: 2,
       },
@@ -70,9 +70,9 @@ const calendarStates = [
         dateRange: "20 may - 23 may",
         image: "/fem-waterfall.png",
         participants: [
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
+          "/people1.jpg",
+          "/people2.jpg",
+          "/people3.jpg", 
         ],
         additionalCount: 2,
       },
@@ -82,9 +82,9 @@ const calendarStates = [
         dateRange: "20 may - 23 may",
         image: "/night-campaign.png",
         participants: [
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
-          "/placeholder.svg?height=24&width=24",
+          "/people1.jpg",
+          "/people2.jpg",
+          "/people3.jpg", 
         ],
         additionalCount: 2,
       },
@@ -105,7 +105,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full h-full bg-gray-50 px-2.5 py-2.5">
+    <div className="w-full h-full bg-white px-2.5 py-2.5">
       <div className="w-full h-full bg-white rounded-[10px] overflow-hidden grid grid-cols-6">
 
         <div className="col-span-1 border-r border-gray-100">

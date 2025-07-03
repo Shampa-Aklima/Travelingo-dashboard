@@ -37,11 +37,11 @@ export default function RightSidebar({
   onToggleCalendar,
 }: RightSidebarProps) {
   return (
-    <div className="w-full h-full bg-gray-50 px-4">
+    <div className="w-full h-full bg-white px-4">
 
-<div className=" bg-white p-4 rounded-lg shadow-md">  
-  <div className="flex justify-center items-center">
-  <div className="flex">
+<div >  
+  <div className="flex justify-start items-center gap-5 ">
+  <div className="flex gap-4">
             <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-200">
               <Image
                 src="/jim.png"
@@ -61,11 +61,11 @@ export default function RightSidebar({
       <div className="mb-4">
         <button
           onClick={onToggleCalendar}
-          className="w-full flex items-center justify-center space-x-2 px-3 py-2 bg-emerald-100 text-emerald-700 rounded-lg hover:bg-emerald-200 transition-colors"
+          className="w-full flex items-center justify-center space-x-2 px-3 py-2"
           title="Switch Calendar View"
         >
           <ArrowPathIcon className="w-4 h-4" />
-          <span className="text-sm font-medium">Switch Calendar</span>
+         
         </button>
       </div>
  </div>  

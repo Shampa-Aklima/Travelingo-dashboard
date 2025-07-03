@@ -27,8 +27,8 @@ export default function Schedule({ scheduleItems }: ScheduleProps) {
               <Image
                 src={item.image || "/placeholder.svg"}
                 alt={item.title}
-                width={60}
-                height={60}
+                width={90}
+                height={90}
                 className="rounded-xl object-cover"
               />
               <div className="flex-1">
@@ -36,7 +36,7 @@ export default function Schedule({ scheduleItems }: ScheduleProps) {
 
                 {/* Date Range */}
                 <div className="flex items-center space-x-2 mb-3">
-                  <div className="bg-gray-100 px-3 py-1 rounded-lg">
+                  <div >
                     <span className="text-sm text-gray-600">{item.dateRange}</span>
                   </div>
                 </div>
@@ -45,13 +45,13 @@ export default function Schedule({ scheduleItems }: ScheduleProps) {
                 <div className="flex items-center space-x-2">
                   <div className="flex -space-x-2">
                     {item.participants.slice(0, 3).map((participantImage, i) => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                      <div key={i} className="w-5 h-5 relative rounded-full border-2 border-white overflow-hidden">
                         <Image
                           src={participantImage || "/placeholder.svg"}
                           alt={`Participant ${i + 1}`}
-                          width={40}
-                          height={40}
-                          className="object-cover"
+                          width={20}
+                          height={20}
+                         
                         />
                       </div>
                     ))}
