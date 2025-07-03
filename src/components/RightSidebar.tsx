@@ -16,34 +16,36 @@ interface ScheduleItem {
 
 interface RightSidebarProps {
   selectedDate: Date;
-  setSelectedDate: (date: Date) => void;
+  setSelectedDateAction: (date: Date) => void;
   currentMonth: Date;
-  setCurrentMonth: (date: Date) => void;
+  setCurrentMonthAction: (date: Date) => void;
   highlightRange: {
     start: Date;
     end: Date;
   };
   scheduleItems: ScheduleItem[];
-  onToggleCalendar: () => void;
-  onClose?: () => void;
+  onToggleCalendarAction: () => void;
+  onCloseAction?: () => void;
+  currentState?: number;
 }
 
 export default function RightSidebar({
   selectedDate,
-  setSelectedDate,
+  setSelectedDateAction,
   currentMonth,
-  setCurrentMonth,
+  setCurrentMonthAction,
   highlightRange,
   scheduleItems,
-  onToggleCalendar,
-  onClose,
+  onToggleCalendarAction,
+  onCloseAction,
+  currentState = 0,
 }: RightSidebarProps) {
   return (
     <div className="w-full h-full bg-white px-4 py-3 relative">
       {/* Mobile Close Button */}
-      {onClose && (
+      {onCloseAction && (
         <button
-          onClick={onClose}
+          onClick={onCloseAction}
           className="absolute top-3 right-3 md:hidden p-2 text-gray-600 hover:text-gray-900"
         >
           <XMarkIcon className="w-5 h-5" />
@@ -68,21 +70,27 @@ export default function RightSidebar({
             </div>
           </div>
           {/* Switch Calendar Button */}
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center space-x-2">
+            <span className="text-xs text-gray-500 hidden md:block">
+              View {currentState + 1}
+            </span>
             <button
-              onClick={onToggleCalendar}
-              className="flex items-center justify-center p-2 hover:bg-gray-100 rounded-lg"
-              title="Switch Calendar View"
+              onClick={() => {
+                console.log('Switch calendar clicked, current state:', currentState);
+                onToggleCalendarAction();
+              }}
+              className="flex items-center justify-center p-3 hover:bg-gray-100 rounded-lg bg-emerald-100 border border-emerald-200"
+              title={`Switch to Calendar View ${currentState === 0 ? 2 : 1}`}
             >
-              <ArrowPathIcon className="w-4 h-4" />
+              <ArrowPathIcon className="w-5 h-5 text-emerald-600" />
             </button>
           </div>
         </div>
         <Calendar
           selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
+          setSelectedDate={setSelectedDateAction}
           currentMonth={currentMonth}
-          setCurrentMonth={setCurrentMonth}
+          setCurrentMonth={setCurrentMonthAction}
           highlightRange={highlightRange}
         />
         <Schedule scheduleItems={scheduleItems} />

@@ -13,8 +13,8 @@ const calendarStates = [
     selectedDate: new Date(2025, 4, 3), 
     currentMonth: new Date(2025, 4, 1), 
     highlightRange: {
-      start: new Date(2025, 4, 20), 
-      end: new Date(2025, 4, 23), 
+      start: new Date(2025, 4, 20),
+      end: new Date(2025, 4, 23),
     },
     scheduleItems: [
       {
@@ -45,48 +45,36 @@ const calendarStates = [
   },
   {
     id: "state-2",
-    selectedDate: new Date(2025, 4, 4), 
-    currentMonth: new Date(2025, 4, 1), 
+    selectedDate: new Date(2025, 5, 4),
+    currentMonth: new Date(2025, 5, 1),
     highlightRange: {
-      start: new Date(2025, 4, 21), 
-      end: new Date(2025, 4, 24), 
+      start: new Date(2025, 5, 21),
+      end: new Date(2025, 5, 24),
     },
     scheduleItems: [
       {
         id: 1,
-        title: "Crooked Forest",
-        dateRange: "20 may - 23 may",
-        image: "/crocked-forest.png",
+        title: "Mountain Hiking",
+        dateRange: "21 jun - 24 jun",
+        image: "/Green Mountain.png",
         participants: [
           "/people1.jpg",
           "/people2.jpg",
-          "/people3.jpg",
         ],
-        additionalCount: 2,
+        additionalCount: 3,
       },
       {
         id: 2,
-        title: "Fem Waterfall",
-        dateRange: "20 may - 23 may",
-        image: "/fem-waterfall.png",
-        participants: [
-          "/people1.jpg",
-          "/people2.jpg",
-          "/people3.jpg", 
-        ],
-        additionalCount: 2,
-      },
-      {
-        id: 3,
-        title: "Night Camping",
-        dateRange: "20 may - 23 may",
+        title: "Beach Resort",
+        dateRange: "23 jun - 25 jun",
         image: "/night-campaign.png",
         participants: [
           "/people1.jpg",
           "/people2.jpg",
-          "/people3.jpg", 
+          "/people3.jpg",
+          "/jim.png",
         ],
-        additionalCount: 2,
+        additionalCount: 1,
       },
     ],
   },
@@ -100,7 +88,9 @@ export default function Dashboard() {
   const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false)
 
   const switchCalendarState = () => {
+    console.log('switchCalendarState called, current state:', currentState);
     const newState = currentState === 0 ? 1 : 0
+    console.log('switching to state:', newState);
     setCurrentState(newState)
     setSelectedDate(calendarStates[newState].selectedDate)
     setCurrentMonth(calendarStates[newState].currentMonth)
@@ -135,12 +125,13 @@ export default function Dashboard() {
         <div className="hidden md:block md:col-span-1 lg:col-span-2">
           <RightSidebar
             selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
+            setSelectedDateAction={setSelectedDate}
             currentMonth={currentMonth}
-            setCurrentMonth={setCurrentMonth}
+            setCurrentMonthAction={setCurrentMonth}
             highlightRange={calendarStates[currentState].highlightRange}
             scheduleItems={calendarStates[currentState].scheduleItems}
-            onToggleCalendar={switchCalendarState}
+            onToggleCalendarAction={switchCalendarState}
+            currentState={currentState}
           />
         </div>
       </div>
@@ -162,13 +153,14 @@ export default function Dashboard() {
           <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-lg">
             <RightSidebar
               selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
+              setSelectedDateAction={setSelectedDate}
               currentMonth={currentMonth}
-              setCurrentMonth={setCurrentMonth}
+              setCurrentMonthAction={setCurrentMonth}
               highlightRange={calendarStates[currentState].highlightRange}
               scheduleItems={calendarStates[currentState].scheduleItems}
-              onToggleCalendar={switchCalendarState}
-              onClose={() => setIsRightSidebarOpen(false)}
+              onToggleCalendarAction={switchCalendarState}
+              onCloseAction={() => setIsRightSidebarOpen(false)}
+              currentState={currentState}
             />
           </div>
         </div>

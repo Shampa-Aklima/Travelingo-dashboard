@@ -29,7 +29,7 @@ interface DestinationCardProps {
 
 export default function DestinationCard({ destination }: DestinationCardProps) {
   return (
-    <div className="relative w-[250px] h-[300px] rounded-2xl overflow-hidden group cursor-pointer">
+    <div className="relative w-full md:w-[250px] h-[300px] rounded-2xl overflow-hidden group cursor-pointer">
       <Image
         src={destination.image || "/placeholder.svg"}
         alt={destination.title}

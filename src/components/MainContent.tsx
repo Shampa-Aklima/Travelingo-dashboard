@@ -64,7 +64,7 @@ export default function MainContent() {
   return (
     <div className="flex-1 px-2 md:px-4 py-4">
       {/* Destination Cards */}
-      <div className="flex gap-4 mb-6 h-80 overflow-x-auto md:overflow-x-visible">
+      <div className="flex flex-col md:flex-row gap-4 mb-6 h-auto md:h-80 overflow-x-visible">
         {destinations.map((destination) => (
           <DestinationCard key={destination.id} destination={destination} />
         ))}
