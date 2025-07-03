@@ -106,7 +106,7 @@ export default function Dashboard() {
 
   return (
     <div className="w-full h-full  px-2.5 py-2.5">
-      <div className="w-full h-full bg-white rounded-[10px] overflow-hidden grid grid-cols-6">
+      <div className="w-full h-full bg-[#F4F8F7] rounded-[10px] overflow-hidden grid grid-cols-6">
       <div className="col-span-1 border-r border-gray-100">
           <Sidebar />
         </div> 
