@@ -64,18 +64,18 @@ export default function MainContent() {
   return (
     <div className="flex-1 px-2 md:px-4 py-4">
       {/* Destination Cards */}
-      <div className="flex flex-col md:flex-row gap-4 mb-6 h-auto md:h-80 overflow-x-visible">
+      <div className="flex flex-col sm:grid sm:grid-cols-3 lg:flex lg:flex-row gap-4 mb-6 h-auto sm:h-auto lg:h-80 overflow-x-visible">
         {destinations.map((destination) => (
           <DestinationCard key={destination.id} destination={destination} />
         ))}
       </div>
 
       {/* Bottom Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <div className="md:col-span-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="sm:col-span-1 lg:col-span-2">
           <DestinationList destinations={bestDestinations} />
         </div>
-        <div className="md:col-span-1">
+        <div className="sm:col-span-1 lg:col-span-1">
           <ExploreCard title="Let's Explore the beauty" />
         </div>
       </div>
