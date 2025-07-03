@@ -20,7 +20,7 @@ export default function Schedule({ scheduleItems }: ScheduleProps) {
     <div>
       <h2 className="text-xl font-bold text-gray-900 mb-6">My Schedule</h2>
 
-      <div className="space-y-4">
+      <div className="space-y-1">
         {scheduleItems.map((item) => (
           <div key={item.id} className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
             <div className="flex items-start space-x-4">
@@ -35,7 +35,7 @@ export default function Schedule({ scheduleItems }: ScheduleProps) {
                 <h3 className="font-semibold text-gray-900 text-base mb-2">{item.title}</h3>
 
                 {/* Date Range */}
-                <div className="flex items-center space-x-2 mb-3">
+                <div className="flex items-center space-x-2 mb-2">
                   <div >
                     <span className="text-sm text-gray-600">{item.dateRange}</span>
                   </div>

@@ -20,13 +20,13 @@ export default function ExploreCard({ title }: Omit<ExploreCardProps, 'image'>) 
             className="relative z-10 mx-auto"
           />
         </div>
-
+<div className="absolute top-20 left-50 w-[100px] h-[100px]  bg-[#17C58B] rounded-full"></div>
         {/* Content */}
         <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
         <p className="text-sm text-gray-300 mb-2">Get special offers & news</p>
 
         {/* Button */}
-        <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-4 rounded-xl transition-colors duration-200">
+        <button className="w-full text-xs bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-4 rounded-xl transition-colors duration-200">
           Join Now
         </button>
       </div>

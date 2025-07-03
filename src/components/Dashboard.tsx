@@ -36,7 +36,7 @@ export default function Dashboard({ config, onToggleCalendar }: DashboardProps) 
   const [currentMonth, setCurrentMonth] = useState<Date>(config.currentMonth)
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-full">
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Header onToggleCalendar={onToggleCalendar} />

@@ -10,11 +10,11 @@ import RightSidebar from "@/components/RightSidebar"
 const calendarStates = [
   {
     id: "state-1",
-    selectedDate: new Date(2025, 4, 3), // May 3, 2025 (light green circle)
-    currentMonth: new Date(2025, 4, 1), // May 2025
+    selectedDate: new Date(2025, 4, 3), 
+    currentMonth: new Date(2025, 4, 1), 
     highlightRange: {
-      start: new Date(2025, 4, 20), // May 20, 2025 (dark green)
-      end: new Date(2025, 4, 23), // May 23, 2025 (dark green)
+      start: new Date(2025, 4, 20), 
+      end: new Date(2025, 4, 23), 
     },
     scheduleItems: [
       {
@@ -45,11 +45,11 @@ const calendarStates = [
   },
   {
     id: "state-2",
-    selectedDate: new Date(2025, 4, 4), // May 4, 2025 (light green circle)
-    currentMonth: new Date(2025, 4, 1), // May 2025
+    selectedDate: new Date(2025, 4, 4), 
+    currentMonth: new Date(2025, 4, 1), 
     highlightRange: {
-      start: new Date(2025, 4, 21), // May 21, 2025 (dark green)
-      end: new Date(2025, 4, 24), // May 24, 2025 (dark green)
+      start: new Date(2025, 4, 21), 
+      end: new Date(2025, 4, 24), 
     },
     scheduleItems: [
       {
@@ -105,10 +105,9 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full h-full bg-white px-2.5 py-2.5">
+    <div className="w-full h-full  px-2.5 py-2.5">
       <div className="w-full h-full bg-white rounded-[10px] overflow-hidden grid grid-cols-6">
-
-        <div className="col-span-1 border-r border-gray-100">
+      <div className="col-span-1 border-r border-gray-100">
           <Sidebar />
         </div> 
         <div className="col-span-3 flex flex-col border-r border-gray-100">

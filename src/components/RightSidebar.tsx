@@ -37,7 +37,7 @@ export default function RightSidebar({
   onToggleCalendar,
 }: RightSidebarProps) {
   return (
-    <div className="w-full h-full bg-white px-4">
+    <div className="w-full h-full bg-white px-4 mt-3">
 
 <div >  
   <div className="flex justify-start items-center gap-5 ">

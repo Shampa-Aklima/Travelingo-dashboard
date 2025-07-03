@@ -24,10 +24,10 @@ export default function Sidebar() {
   const [activeItem, setActiveItem] = useState("Dashboard")
 
   return (
-    <div className="w-full bg-white flex flex-col">
+    <div className="w-full h-full bg-white flex flex-col">
       {/* Logo */}
       <div className="px-4 py-6">
-        <h1 className="text-lg font-bold text-gray-900">Travelingo</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Travelingo</h1>
       </div>
 
       {/* Navigation */}
@@ -50,21 +50,20 @@ export default function Sidebar() {
       </nav>
 
       {/* Discount Card */}
-      <div >
-        <div className="w-[200px] h-[265px] bg-[#b9f4e0] rounded-xl p-4 text-white relative overflow-hidden mt-10 ">
+      <div className="px-3 pb-3 ">
+        <div className=" w-[190px] h-[250px] bg-[#B9F4E0] rounded-xl p-4 text-white relative overflow-hidden">
           <div className="relative z-10">
-            <h3 className="text-2xl text-black mb-1"><span className="text-2xl text-[#FF8142]">50% </span>Discount</h3>
-            <p className="text-xs opacity-90 mb-1">Special offer for you</p>
-            <p className="text-xs opacity-75">Valid until 31 Dec</p>
+            <h3 className="text-xl text-black font-bold mb-1"> <span className="text-xl text-[#FF8142]">50%</span> Discount</h3>
+            <p className="text-xs text-[#5E5E5E] mb-1">Get a discount on certain days and
+            don’t miss it. </p> 
           </div>
-          <div className="absolute -top-3 -left-3 w-28 h-28 bg-[#b9f4e0]/10 rounded-full"></div>
-          <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-white/20 rounded-full"></div>
-          <div className="absolute -top-1 -right-1 w-6 h-6 bg-white/20 rounded-full"></div>
+          <div className="absolute top-0 left-0 w-[100px] h-[100px]  bg-[#8df3d1] rounded-full"></div>
+          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#8df3d1] rounded-full"></div>
         </div>
       </div>
 
       {/* Logout */}
-      <div className="px-3 pb-4 mt-10">
+      <div className="px-3 pb-4">
         <button className="w-full flex items-center px-3 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
           <ArrowRightOnRectangleIcon className="w-4 h-4 mr-2" />
           Log Out
@@ -73,4 +72,3 @@ export default function Sidebar() {
     </div>
   )
 }
-
