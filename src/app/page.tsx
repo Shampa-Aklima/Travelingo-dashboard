@@ -96,6 +96,8 @@ export default function Dashboard() {
   const [currentState, setCurrentState] = useState(0)
   const [selectedDate, setSelectedDate] = useState(calendarStates[currentState].selectedDate)
   const [currentMonth, setCurrentMonth] = useState(calendarStates[currentState].currentMonth)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false)
 
   const switchCalendarState = () => {
     const newState = currentState === 0 ? 1 : 0
@@ -105,18 +107,33 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full h-full  px-2.5 py-2.5">
-      <div className="w-full h-full bg-[#F4F8F7] rounded-[10px] overflow-hidden grid grid-cols-6">
-      <div className="col-span-1 border-r border-gray-100">
+    <div className="w-full h-full px-2.5 py-2.5">
+      <div className="w-full h-full bg-[#F4F8F7] rounded-[10px] overflow-hidden
+                      grid grid-cols-1
+                      md:grid-cols-4
+                      lg:grid-cols-6">
+        {/* Sidebar - Hidden on mobile, shown on md+ */}
+        <div className="hidden md:block md:col-span-1 lg:col-span-1 border-r border-gray-100">
           <Sidebar />
-        </div> 
-        <div className="col-span-3 flex flex-col border-r border-gray-100">
-          <Header onToggleCalendar={switchCalendarState} />
+        </div>
+
+        {/* Main Content - Full width on mobile, adjusted on larger screens */}
+        <div className="col-span-1
+                        md:col-span-2
+                        lg:col-span-3
+                        flex flex-col border-r border-gray-100">
+          <Header
+            onToggleCalendar={switchCalendarState}
+            onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onToggleRightSidebar={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
+          />
           <div className="flex-1 overflow-hidden">
             <MainContent />
           </div>
-        </div>    
-        <div className="col-span-2">
+        </div>
+
+        {/* Right Sidebar - Hidden on mobile, shown on md+ */}
+        <div className="hidden md:block md:col-span-1 lg:col-span-2">
           <RightSidebar
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
@@ -128,6 +145,35 @@ export default function Dashboard() {
           />
         </div>
       </div>
+
+      {/* Mobile Sidebar Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsMobileMenuOpen(false)} />
+          <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-lg">
+            <Sidebar />
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Right Sidebar Overlay */}
+      {isRightSidebarOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsRightSidebarOpen(false)} />
+          <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-lg">
+            <RightSidebar
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+              currentMonth={currentMonth}
+              setCurrentMonth={setCurrentMonth}
+              highlightRange={calendarStates[currentState].highlightRange}
+              scheduleItems={calendarStates[currentState].scheduleItems}
+              onToggleCalendar={switchCalendarState}
+              onClose={() => setIsRightSidebarOpen(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
