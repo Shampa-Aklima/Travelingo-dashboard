@@ -123,7 +123,6 @@ export default function Dashboard() {
                         lg:col-span-3
                         flex flex-col border-r border-gray-100">
           <Header
-            onToggleCalendar={switchCalendarState}
             onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             onToggleRightSidebar={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
           />
