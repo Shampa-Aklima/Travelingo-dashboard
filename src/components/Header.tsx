@@ -4,8 +4,8 @@ import { BellIcon, MagnifyingGlassIcon, Bars3Icon, CalendarIcon } from "@heroico
 
 interface HeaderProps {
   onToggleCalendar: () => void;
-  onToggleMobileMenu?: () => void;
-  onToggleRightSidebar?: () => void;
+  onToggleMobileMenu: () => void;
+  onToggleRightSidebar: () => void;
 }
 
 export default function Header({ onToggleCalendar, onToggleMobileMenu, onToggleRightSidebar }: HeaderProps) {

@@ -3,7 +3,6 @@
 import DestinationCard from "./DestinationCard";
 import DestinationList from "./DestinationList";
 import ExploreCard from "./ExploreCard";
-
 const destinations = [
   {
     id: 1,
@@ -64,12 +63,14 @@ const bestDestinations = [
 export default function MainContent() {
   return (
     <div className="flex-1 px-2 md:px-4 py-4">
+      {/* Destination Cards */}
       <div className="flex gap-4 mb-6 h-80 overflow-x-auto md:overflow-x-visible">
         {destinations.map((destination) => (
           <DestinationCard key={destination.id} destination={destination} />
         ))}
       </div>
 
+      {/* Bottom Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div className="md:col-span-2">
           <DestinationList destinations={bestDestinations} />
