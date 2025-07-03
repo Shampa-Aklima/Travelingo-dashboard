@@ -8,7 +8,7 @@ interface HeaderProps {
   onToggleRightSidebar: () => void;
 }
 
-export default function Header({ onToggleCalendar, onToggleMobileMenu, onToggleRightSidebar }: HeaderProps) {
+export default function Header({ onToggleMobileMenu, onToggleRightSidebar }: Omit<HeaderProps, 'onToggleCalendar'>) {
   return (
     <div className="bg-white px-4 py-4 border-b border-gray-100">
       <div className="flex items-center justify-between">
